@@ -20,7 +20,7 @@
 This repository deposits the mclUMI toolkit developed by Markov clustering (MCL) network-based algorithms for precisely localizing unique UMIs and thus removing PCR duplicates. mclUMI enables a construction of sub-graphs with UMI nodes to be relatively strongly connected.
 
 ## Documentation
-The API documentation of mclUMI is available at Readthedocs https://mclumi.readthedocs.io/en/latest/.
+The API documentation of mclUMI is available at https://mclumi.herokuapp.com and https://mclumi.readthedocs.io/en/latest.
 
 ## System requirement
 Linux or Mac
