@@ -1,5 +1,5 @@
-# Mclumi
-![](https://img.shields.io/badge/Mclumi-executable-519dd9.svg)
+# mclUMI
+![](https://img.shields.io/badge/mclUMI-executable-519dd9.svg)
 ![](https://img.shields.io/badge/last_released-Oct._2021-green.svg)
 ![](https://img.shields.io/github/stars/cribbslab/mclumi?logo=GitHub&color=blue)
 ![](https://img.shields.io/pypi/v/mclumix?logo=PyPI)
@@ -7,7 +7,6 @@
 [![Downloads](https://pepy.tech/badge/mclumi)](https://pepy.tech/project/mclumi)
 
 ###### tags: `UMI deduplication` `PCR deduplication` `scRNA-seq` `bulk-RNA-seq`
-
 
 ## Overview
 ```
@@ -18,10 +17,10 @@
 |_|  |_|\____|_____\___/|_|  |_|___|   |_|\___/ \___/|_|_|\_\_|\__|
 ```
 
-This repository deposits the Mclumi toolkit developed by Markov clustering (MCL) network-based algorithms for precisely localizing unique UMIs and thus removing PCR duplicates. Mclumi enables a construction of sub-graphs with UMI nodes to be relatively strongly connected.
+This repository deposits the mclUMI toolkit developed by Markov clustering (MCL) network-based algorithms for precisely localizing unique UMIs and thus removing PCR duplicates. mclUMI enables a construction of sub-graphs with UMI nodes to be relatively strongly connected.
 
 ## Documentation
-The API documentation of Mclumi is available at Readthedocs https://mclumi.readthedocs.io/en/latest/.
+The API documentation of mclUMI is available at Readthedocs https://mclumi.readthedocs.io/en/latest/.
 
 ## System requirement
 Linux or Mac
@@ -36,9 +35,9 @@ We tested the software installation on a Linux system, which has the following c
 The anaconda is configured as:
 * Conda version: 4.11.0
 
-*You can use `conda update conda` and `conda update anaconda` to keep your anaconda up-to-date.
+> You can use `conda update conda` and `conda update anaconda` to keep your anaconda up-to-date.
 
-We recommend using a Python of version 3.9.1 as the base python to create your conda environment because NumPy and Pandas in a Python of higher version 3.9 may require a few dependencies that are not included in the installation of mclUMI or make conflicts with existing packages.
+We recommend using a `Python` of version **`3.9.1`** as the base python to create your conda environment because `NumPy` and `Pandas` in a `Python` of higher version `3.9` may require a few dependencies that are not included in the installation of mclUMI or make conflicts with existing packages.
 
 **Step 1**: create a conda environment, e.g., mclumi
   ```angular2html
@@ -46,24 +45,27 @@ We recommend using a Python of version 3.9.1 as the base python to create your c
       
   conda activate mclumi
   ```
+  
+  <h1>
+      <img src="https://github.com/cribbslab/mclumi/blob/main/imgs/conda-setting.png?raw=true">
+      <br>
+  </h1>
 
 **Step 2**: sourced from https://pypi.org/project/mclumix.
   ```angular2html
   pip install --upgrade mclumix
   ```
-
 After a two-step installation procedure, you should see the following outputs.
   <h1>
       <img src="https://github.com/cribbslab/mclumi/blob/main/imgs/install.png?raw=true">
       <br>
   </h1>
 
-
 ## Usage
 To ease the use of mclUMI for multiple groups of users, we have made it usable in both command-line interface (CLI) and inline mode. 
 
-### 1. **CLI**
-* Package info
+### 1. CLI
+1.1 Parameter illustration
 
 By typing `mclumi -h`, you are able to see the package usage as shown below.
 
@@ -139,51 +141,42 @@ optional arguments:
                         recommended)
 ```
 
-* trim
-    extracting and attaching umis to names of reads in fastq format
+1.2 Example commands
+
+* extracting and attaching umis to names of reads in fastq format
     ```
     mclumi trim -i ./pcr_1.fastq.gz -o ./pcr_trimmed.fastq.gz -rs primer_1+umi_1+seq_1+umi_2+primer_2 -l 20+10+40+10+20
     ```
 
-* dedup_basic
+* deduplication on only one genome position 
     ```
     mclumi dedup_basic -m mcl -ed 1 -infv 1.6 -expv 2 -ibam ./example_bundle.bam -obam ./dedup.bam
     ```
 
-* dedup_pos
+* deduplication per genome position
     ```
    mclumi dedup_pos -m mcl -pt PO -ed 1 -infv 1.6 -expv 2 -ibam ./example_bundle.bam -obam ./basic/dedup.bam
     ```
-    
-* dedup_gene
 
-    * applicable to bulk RNA-seq data
-    
+* deduplication per gene (applicable to bulk RNA-seq data)
     ```
     mclumi dedup_gene -m directional -gt XT -gist XS -ed 1 -ibam ./hgmm_100_STAR_FC_sorted.bam -obam ./dedup.bam
     ```
-    
-* dedup_sc
 
-    * applicable to single-cell RNA-seq data
-    
+* deduplication per cell per gene (applicable to single-cell RNA-seq data)
     ```
     mclumi dedup_sc -m directional -gt XT -gist XS -ed 1 -ibam ./hgmm_100_STAR_FC_sorted.bam -obam ./dedup.bam
     ```
 
-### 2. **Python inline**
+### 2. Inline
 
-* see Jupyter notebooks
-    ```
-    ./notebooks/...
-    ```
-
+see Jupyter notebooks
+```
+./notebooks/
+```
 
 ## Output
-
-see ./notebooks/results_spelt_out.ipynb for result format. Yet more types of output format will be added. 
-
+see `./notebooks/results_spelt_out.ipynb` for result format. More types of output format are about to be added.
 
 ## Contact
-
 Homepage: https://www.ndorms.ox.ac.uk/team/adam-cribbs  
